@@ -1,0 +1,31 @@
+{
+  "name": "sovereign-recovery",
+  "version": "1.0.0",
+  "description": "Recover once. Recover across chains.",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "milestone1b": "node scripts/run-milestone1b.cjs",
+    "verify:network": "node scripts/verify-network.cjs",
+    "deploy:source": "node scripts/deploy-mock-source.cjs",
+    "deploy:vault": "node scripts/deploy-vault.cjs",
+    "authorize": "node scripts/authorize-recovery.cjs",
+    "prove": "node scripts/generate-proof.cjs",
+    "submit": "node scripts/submit-proof.cjs",
+    "replay": "node scripts/test-replay.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@gluwa/asc-contracts": "0.2.1",
+    "@gluwa/usc-sdk": "0.18.0",
+    "@openzeppelin/contracts": "5.1.0",
+    "dotenv": "17.4.2"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
+    "hardhat": "2.28.6"
+  }
+}

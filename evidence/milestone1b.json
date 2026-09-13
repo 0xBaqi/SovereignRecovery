@@ -1,0 +1,197 @@
+{
+  "milestone": "1B",
+  "product": "SovereignRecovery",
+  "tagline": "Recover once. Recover across chains.",
+  "timestamp": "2026-09-13T14:45:00Z",
+  "networks": {
+    "sepolia": {
+      "name": "Ethereum Sepolia",
+      "chainId": 11155111,
+      "attestcoinChainKey": 1,
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com"
+    },
+    "creditcoinCC3": {
+      "name": "Creditcoin CC3 Testnet",
+      "chainId": 102031,
+      "rpc": "https://rpc.cc3-testnet.creditcoin.network",
+      "proofBuilderUrl": "https://prover.cc3-testnet.creditcoin.network/",
+      "precompileAddress": "0x0000000000000000000000000000000000000FD2"
+    }
+  },
+  "packageVersions": {
+    "@gluwa/asc-contracts": "0.2.1",
+    "@gluwa/usc-sdk": "0.18.0",
+    "@openzeppelin/contracts": "5.1.0",
+    "hardhat": "2.28.6",
+    "solc": "0.8.28 (viaIR: true)"
+  },
+  "localTestResults": {
+    "total": 19,
+    "passing": 19,
+    "failing": 0,
+    "scenariosCovered": [
+      "Configured recovery authority CAN emit RecoveryAuthorized",
+      "Arbitrary account CANNOT emit RecoveryAuthorized (UnauthorizedRecoveryAuthority)",
+      "Rejection of zero recoveryAuthority at deployment",
+      "Rejection of zero destinationChainId",
+      "Rejection of zero addresses and identical owners",
+      "Rejection of zero expectedSourceChainKey at deployment",
+      "Valid recovery A -> B with event and nonce increment",
+      "Sequential recovery A -> B (nonce 0) then B -> C (nonce 1)",
+      "Rejection of wrong source chainKey",
+      "Unauthorized source emitter rejection",
+      "Wrong destination chain rejection",
+      "Wrong destination account rejection",
+      "Skipped/invalid nonce rejection",
+      "Wrong old owner rejection",
+      "Zero new owner rejection",
+      "Identical new owner rejection",
+      "Replay rejection via ASCBase query deduplication",
+      "Stale nonce rejection with fresh queryId",
+      "Strict internal access control (cannot be called externally)"
+    ]
+  },
+  "initialTransportRun": {
+    "status": "COMPLETE",
+    "description": "Initial Milestone 1B transport demonstration with open MockRecoverySource",
+    "sepoliaSourceContract": {
+      "address": "0x527f508C47ac108Ae4d048F2B8f787E091bDb604",
+      "deployer": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "deploymentTxHash": "0x1ab92b0a48830c1f7a0374e832303103362ab5d17becbaf5d87bb361a501af62",
+      "blockNumber": 11696176,
+      "gasUsed": "123707",
+      "explorerLink": "https://sepolia.etherscan.io/address/0x527f508C47ac108Ae4d048F2B8f787E091bDb604"
+    },
+    "cc3VaultContract": {
+      "address": "0x527f508C47ac108Ae4d048F2B8f787E091bDb604",
+      "deployer": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "initialOwner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "registeredRecoverySource": "0x527f508C47ac108Ae4d048F2B8f787E091bDb604",
+      "expectedSourceChainKey": 1,
+      "deploymentTxHash": "0xd16413b5e1d8931ec8a32dcbaa31bd657d35afa45368ffdbe9693fa7fd7b5008",
+      "blockNumber": 5480979,
+      "gasUsed": "1321888"
+    },
+    "sepoliaRecoveryTx": {
+      "txHash": "0x14ffc715f5d480c928a43171ee561acbc25d83bae3ccf19e4db6291b618836a9",
+      "blockNumber": 11696178,
+      "gasUsed": "25305",
+      "destinationChainId": 102031,
+      "destinationAccount": "0x527f508C47ac108Ae4d048F2B8f787E091bDb604",
+      "recoveryNonce": 0,
+      "oldOwner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "newOwner": "0x4327318947F8b285fF9eE05b01f860BFbFBc0bDE",
+      "explorerLink": "https://sepolia.etherscan.io/tx/0x14ffc715f5d480c928a43171ee561acbc25d83bae3ccf19e4db6291b618836a9"
+    },
+    "attestcoinProof": {
+      "chainKey": 1,
+      "headerNumber": 11696178,
+      "txIndex": 114,
+      "merkleRoot": "0xe6868ff1906f71c130a8e00307793ef9deed97af9ee140a11b57686c9699e26d",
+      "siblingCount": 7,
+      "lowerEndpointDigest": "0xd5a8eb1b0cf3980609a0cb1ac7ab9f90c7e1e437404a80832b0fe4c1cb8f247e",
+      "continuityRootsCount": 3,
+      "savedProofFile": "evidence/attestcoin_proof_run1.json",
+      "generatedAt": "2026-09-13T13:34:02.035Z"
+    },
+    "cc3ExecutionTx": {
+      "txHash": "0x0b4275719b14ed3c9a563037829d8e82696b8d79a41bd15fbc086af7ed220df2",
+      "blockNumber": 5481012,
+      "gasUsed": "139132",
+      "stateBefore": {
+        "owner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+        "nonce": 0
+      },
+      "stateAfter": {
+        "owner": "0x4327318947F8b285fF9eE05b01f860BFbFBc0bDE",
+        "nonce": 1
+      },
+      "accountRecoveredEvent": {
+        "oldOwner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+        "newOwner": "0x4327318947F8b285fF9eE05b01f860BFbFBc0bDE",
+        "recoveryNonce": "0",
+        "queryId": "0xb357fa164a5a72da5de761a0f8cc97f1f0025eb91132ee214dabb1806894c5ed"
+      }
+    },
+    "replayAttempt": {
+      "replaySuccess": false,
+      "observedRevertReason": "execution reverted: \"Query already processed\"",
+      "classifiedProtectionMechanism": "ASCBase query deduplication (processedQueries[queryId] == true)",
+      "testedAt": "2026-09-13T13:34:26.385Z"
+    }
+  },
+  "liveExecution": {
+    "status": "COMPLETE",
+    "description": "Hardened Milestone 1B run with access-controlled recoveryAuthority on MockRecoverySource",
+    "sepoliaSourceContract": {
+      "address": "0x2d2470Ff6eD7563d0109d9C180cc9F1805d09fF9",
+      "deployer": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "deploymentTxHash": "0xb8eee5dac8da599950beb80a236f523519a54d566870833038cdbea14f3204b3",
+      "blockNumber": 11697143,
+      "gasUsed": "159168",
+      "explorerLink": "https://sepolia.etherscan.io/address/0x2d2470Ff6eD7563d0109d9C180cc9F1805d09fF9"
+    },
+    "cc3VaultContract": {
+      "address": "0x2d2470Ff6eD7563d0109d9C180cc9F1805d09fF9",
+      "deployer": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "initialOwner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "registeredRecoverySource": "0x2d2470Ff6eD7563d0109d9C180cc9F1805d09fF9",
+      "expectedSourceChainKey": 1,
+      "deploymentTxHash": "0xf8d8ac78e2af9b4218c80d182337e2c8e377e3c7115e6bd8bab85c4126cbbe30",
+      "blockNumber": 5481775,
+      "gasUsed": "1321888"
+    },
+    "sepoliaRecoveryTx": {
+      "txHash": "0x0b076ac2c1242f4905c2a9d4e30f56163051ebe558bbab0a5a0f95884bab9363",
+      "blockNumber": 11697145,
+      "gasUsed": "25382",
+      "destinationChainId": 102031,
+      "destinationAccount": "0x2d2470Ff6eD7563d0109d9C180cc9F1805d09fF9",
+      "recoveryNonce": 0,
+      "oldOwner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+      "newOwner": "0xAE05B00d4bF1ABC3DA94622831AecFBd3539ef21",
+      "explorerLink": "https://sepolia.etherscan.io/tx/0x0b076ac2c1242f4905c2a9d4e30f56163051ebe558bbab0a5a0f95884bab9363"
+    },
+    "attestcoinProof": {
+      "chainKey": 1,
+      "headerNumber": 11697145,
+      "txIndex": 80,
+      "merkleRoot": "0x82b07cedf3eb6a6e0d1e905f9e98d780abee69f60b0bc3887e76f6b4818adbfa",
+      "siblingCount": 7,
+      "lowerEndpointDigest": "0x7458dc3d55090a240f69df48633c4c5fbd079f3220ebb29e6d21bb6d3b31d842",
+      "continuityRootsCount": 6,
+      "savedProofFile": "evidence/attestcoin_proof.json",
+      "generatedAt": "2026-09-13T16:53:52.306Z"
+    },
+    "cc3ExecutionTx": {
+      "txHash": "0x473918051d6590c2e3aeb30f2b5c48d00e54ecfa13b97ac738d61b6c9869f483",
+      "blockNumber": 5481810,
+      "gasUsed": "140476",
+      "stateBefore": {
+        "owner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+        "nonce": 0
+      },
+      "stateAfter": {
+        "owner": "0xAE05B00d4bF1ABC3DA94622831AecFBd3539ef21",
+        "nonce": 1
+      },
+      "accountRecoveredEvent": {
+        "oldOwner": "0xa11c20b7f5525468b0FACAF6fe246C31F5eB912c",
+        "newOwner": "0xAE05B00d4bF1ABC3DA94622831AecFBd3539ef21",
+        "recoveryNonce": "0",
+        "queryId": "0x42b043bcd9c91f0266ae31573d1f3f397ab1601c723d4bd3d1ae3e45e57525fb"
+      }
+    },
+    "replayAttempt": {
+      "replaySuccess": false,
+      "observedRevertReason": "execution reverted: \"Query already processed\"",
+      "classifiedProtectionMechanism": "ASCBase query deduplication (processedQueries[queryId] == true)",
+      "testedAt": "2026-09-13T16:54:01.089Z"
+    },
+    "unauthorizedAttempt": {
+      "tested": true,
+      "result": "REJECTED_WITH_CUSTOM_ERROR",
+      "error": "UnauthorizedRecoveryAuthority"
+    }
+  }
+}
